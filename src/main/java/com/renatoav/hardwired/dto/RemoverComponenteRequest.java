@@ -3,5 +3,5 @@ package com.renatoav.hardwired.dto;
 import lombok.Data;
 
 @Data
-public class CadastrarComponenteRequest {
+public class RemoverComponenteRequest {
 }
