@@ -2,7 +2,6 @@ package com.renatoav.hardwired.controller;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.renatoav.hardwired.dto.CadastrarComponenteRequest;
-import com.renatoav.hardwired.dto.RemoverComponenteRequest;
 import com.renatoav.hardwired.entity.Componente;
 import com.renatoav.hardwired.service.ComponenteService;
 import lombok.RequiredArgsConstructor;
@@ -21,9 +20,9 @@ public class ComponenteController {
         componenteService.salvar(mapper.convertValue(componente, Componente.class));
     }
 
-    @DeleteMapping
-    public void remover(@RequestBody RemoverComponenteRequest componente) {
-        componenteService.remover(mapper.convertValue(componente, Componente.class));
+    @DeleteMapping("/{id}")
+    public void remover(@PathVariable Long id) {
+        componenteService.remover(id);
     }
 
     @GetMapping

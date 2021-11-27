@@ -21,5 +21,5 @@ public class Montagem {
     private List<Componente> componentes;
     @ManyToOne
     @JoinColumn(name = "id_usuario")
-    private Usuario usuario;
+    private Cliente cliente;
 }

@@ -17,7 +17,7 @@ public class MontagemServiceImpl implements MontagemService {
     }
 
     @Override
-    public void remover(Montagem montagem) {
-        montagemRepository.delete(montagem);
+    public void remover(Long id) {
+        montagemRepository.deleteById(id);
     }
 }

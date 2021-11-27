@@ -17,7 +17,7 @@ public class ComponenteServiceImpl implements ComponenteService {
     }
 
     @Override
-    public void remover(Componente componente) {
-        componenteRepository.delete(componente);
+    public void remover(Long id) {
+        componenteRepository.deleteById(id);
     }
 }

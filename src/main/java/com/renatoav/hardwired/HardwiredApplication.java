@@ -10,4 +10,11 @@ public class HardwiredApplication {
 		SpringApplication.run(HardwiredApplication.class, args);
 	}
 
+//	@Bean
+//	CommandLineRunner cli(ClienteRepository clienteRepository, PasswordEncoder passwordEncoder) {
+//		return cli -> {
+//			clienteRepository.save(new Cliente("a", "a", "a", passwordEncoder.encode("a"), "ROLE_USER"));
+//		};
+//	}
+
 }
