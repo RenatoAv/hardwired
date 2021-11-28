@@ -28,8 +28,8 @@ public class JWTService {
     private static final String SECRET = "secret";
     private final Algorithm algorithm = Algorithm.HMAC256(SECRET.getBytes());
     private final JWTVerifier verifier = JWT.require(algorithm).build();
-    private final Integer ACCESS_TOKEN_VALIDITY = 10 * 60 * 1000; // milissegundos
-    private final Integer REFRESH_TOKEN_VALIDITY = 30 * 60 * 1000; // milissegundos
+    private final Integer ACCESS_TOKEN_VALIDITY = 30 * 60 * 1000; // milissegundos
+    private final Integer REFRESH_TOKEN_VALIDITY = 60 * 60 * 1000; // milissegundos
 
     private final UsuarioService usuarioService;
 

@@ -14,6 +14,7 @@ public class Montagem {
     @Id
     @GeneratedValue(strategy = IDENTITY)
     private Long id;
+    private String nome;
     @ManyToMany
     @JoinTable(name="componente_montagem",
             joinColumns = {@JoinColumn(name = "id_montagem")},

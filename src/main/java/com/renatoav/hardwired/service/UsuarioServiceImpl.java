@@ -3,6 +3,7 @@ package com.renatoav.hardwired.service;
 import com.renatoav.hardwired.entity.Usuario;
 import com.renatoav.hardwired.repository.UsuarioRepository;
 import lombok.RequiredArgsConstructor;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -29,6 +30,12 @@ public class UsuarioServiceImpl implements UsuarioService {
     @Override
     public void remover(Long id) {
         usuarioRepository.deleteById(id);
+    }
+
+    @Override
+    public Usuario obterUsuarioAutenticado() {
+        String username = (String) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        return (Usuario) loadUserByUsername(username);
     }
 
 }

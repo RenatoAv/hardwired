@@ -16,8 +16,8 @@ public class ComponenteController {
     private final ObjectMapper mapper;
 
     @PostMapping
-    public void salvar(@RequestBody CadastrarComponenteRequest componente) {
-        componenteService.salvar(mapper.convertValue(componente, Componente.class));
+    public void salvar(@RequestBody CadastrarComponenteRequest componenteRequest) {
+        componenteService.salvar(mapper.convertValue(componenteRequest, Componente.class));
     }
 
     @DeleteMapping("/{id}")
@@ -25,8 +25,4 @@ public class ComponenteController {
         componenteService.remover(id);
     }
 
-    @GetMapping
-    public String get() {
-        return "bem vindo";
-    }
 }
