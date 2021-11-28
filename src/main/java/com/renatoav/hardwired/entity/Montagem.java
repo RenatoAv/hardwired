@@ -11,6 +11,7 @@ import static javax.persistence.GenerationType.IDENTITY;
 @Data
 @Entity
 public class Montagem {
+
     @Id
     @GeneratedValue(strategy = IDENTITY)
     private Long id;
