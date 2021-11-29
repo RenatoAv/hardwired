@@ -1,5 +1,6 @@
 package com.renatoav.hardwired.service;
 
+import com.renatoav.hardwired.dto.ListarMontagemPorUsuarioRequest;
 import com.renatoav.hardwired.entity.Montagem;
 import com.renatoav.hardwired.repository.MontagemRepository;
 import lombok.RequiredArgsConstructor;
@@ -25,7 +26,7 @@ public class MontagemServiceImpl implements MontagemService {
     }
 
     @Override
-    public Page<Montagem> listarPorIdCliente(Long id, Pageable pageable) {
-        return montagemRepository.findAllByClienteId(id, pageable);
+    public Page<ListarMontagemPorUsuarioRequest> listarPorIdCliente(Long id, Pageable pageable) {
+        return montagemRepository.listarMontagensPorUsuario(id, pageable);
     }
 }

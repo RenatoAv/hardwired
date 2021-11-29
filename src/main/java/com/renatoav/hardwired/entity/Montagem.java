@@ -16,7 +16,7 @@ public class Montagem {
     @GeneratedValue(strategy = IDENTITY)
     private Long id;
     private String nome;
-    @ManyToMany
+    @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(name="componente_montagem",
             joinColumns = {@JoinColumn(name = "id_montagem")},
             inverseJoinColumns = {@JoinColumn(name = "id_componente")})

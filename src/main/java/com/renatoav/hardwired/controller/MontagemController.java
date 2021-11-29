@@ -2,6 +2,7 @@ package com.renatoav.hardwired.controller;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.renatoav.hardwired.dto.CadastrarMontagemRequest;
+import com.renatoav.hardwired.dto.ListarMontagemPorUsuarioRequest;
 import com.renatoav.hardwired.entity.Cliente;
 import com.renatoav.hardwired.entity.Montagem;
 import com.renatoav.hardwired.entity.Usuario;
@@ -36,9 +37,9 @@ public class MontagemController {
     }
 
     @GetMapping
-    public Page<Montagem> listarPorCliente(@RequestParam Long id,
-                                           @RequestParam(required = false, defaultValue = "0") int page) {
+    public Page<ListarMontagemPorUsuarioRequest> listarPorUsuarioAutenticado(@RequestParam(required = false, defaultValue = "0") int page) {
+        Usuario usuario = usuarioService.obterUsuarioAutenticado();
         Pageable pageable = PageRequest.of(page, 5);
-        return montagemService.listarPorIdCliente(id, pageable);
+        return montagemService.listarPorIdCliente(usuario.getId(), pageable);
     }
 }

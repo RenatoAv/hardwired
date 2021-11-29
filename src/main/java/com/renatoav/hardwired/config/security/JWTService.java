@@ -8,6 +8,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.renatoav.hardwired.entity.Usuario;
 import com.renatoav.hardwired.service.UsuarioService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatus;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.stereotype.Service;
 
@@ -28,7 +29,7 @@ public class JWTService {
     private static final String SECRET = "secret";
     private final Algorithm algorithm = Algorithm.HMAC256(SECRET.getBytes());
     private final JWTVerifier verifier = JWT.require(algorithm).build();
-    private final Integer ACCESS_TOKEN_VALIDITY = 30 * 60 * 1000; // milissegundos
+    private final Integer ACCESS_TOKEN_VALIDITY = 15 * 1000; // milissegundos
     private final Integer REFRESH_TOKEN_VALIDITY = 60 * 60 * 1000; // milissegundos
 
     private final UsuarioService usuarioService;
@@ -66,6 +67,8 @@ public class JWTService {
     }
 
     public void refresh(HttpServletRequest request, HttpServletResponse response, String refreshToken) throws IOException {
+        refreshToken = refreshToken.substring("Bearer ".length());
+
         DecodedJWT decodedJWT = decode(refreshToken, response);
         Usuario usuario = (Usuario) usuarioService.loadUserByUsername(decodedJWT.getSubject());
         criarToken(request, response, usuario);
@@ -81,6 +84,7 @@ public class JWTService {
                 put("error_message", e.getMessage());
             }};
             response.setContentType(APPLICATION_JSON_VALUE);
+            response.setStatus(HttpStatus.UNAUTHORIZED.value());
             new ObjectMapper().writeValue(response.getOutputStream(), erro);
         }
 
