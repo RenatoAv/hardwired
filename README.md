@@ -1,4 +1,4 @@
-# hardwired
+# hardwired - Rest API
 Sistema de gerenciamento de hardware
 
 Tecnologias:
