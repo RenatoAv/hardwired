@@ -1,6 +1,5 @@
 package com.renatoav.hardwired.dto;
 
-import com.renatoav.hardwired.entity.Componente;
 import com.renatoav.hardwired.entity.Montagem;
 import lombok.Getter;
 import lombok.Setter;
@@ -18,7 +17,7 @@ public class ListarMontagemPorUsuarioRequest {
     public ListarMontagemPorUsuarioRequest(Montagem montagem) {
         this.id = montagem.getId();
         this.nome = montagem.getNome();
-        this.totalComponentes = montagem.getComponentes().stream().count();
+        this.totalComponentes = (long) montagem.getComponentes().size();
     }
 
     public ListarMontagemPorUsuarioRequest(Long id, String nome, Long totalComponentes, BigDecimal valorTotal) {
